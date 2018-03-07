@@ -1,9 +1,9 @@
 module mux(
+    input wire [1:0] signal,
     input [31:0] data0,
     input [31:0] data1,
     input [31:0] data2,
     input [31:0] data3,
-    input wire [1:0] signal,
     output reg [31:0] data
 );
 

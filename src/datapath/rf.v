@@ -1,11 +1,10 @@
 module rf(
-    input clk,
+    //input clk,
     input RegWrite,//写入信号
-    input [4:0] WriteAddr,
     
     input [4:0] ReadAddr1,
     input [4:0] ReadAddr2,
-
+    input [4:0] WriteAddr,
     input [31:0] WriteData,
 
     output [31:0] ReadData1,
@@ -23,7 +22,7 @@ module rf(
             register[i] = 0;
     end
 
-    always @(posedge clk) begin
+    always @(*) begin
         if (WriteAddr!=0 && RegWrite) 
         begin
             // 有写入

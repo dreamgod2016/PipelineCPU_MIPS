@@ -1,23 +1,26 @@
 module pc (
     input clk,
-    input PCReSet,
-    input[31:0] data,
     input isPCWrite,
+    // input PCReSet,
+    input[31:0] data,
     output reg[31:0] PC
 );
 
+  initial
+    PC = 32'h3000; 
+  
 
     always @(posedge clk) 
     begin
-        if (PCReSet) 
+        /*if (PCReSet) 
         begin
             // reset
             PC <= 32'h0000_3000;//？
         end
-        else begin
+        else begin*/
             if(isPCWrite)
                 PC = data[31:0];
-        end
+        //end
         //PC就是PC，不要加4这么奇葩了。
         // PC = PC + 4;
         // if (PCSet==1)
