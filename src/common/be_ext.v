@@ -1,4 +1,4 @@
-`include "../define/instr_def.v"
+`include "././define/instr_def.v"
 
 module be_ext(
   input [1:0] control,  //alu_result[1:0]

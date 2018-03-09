@@ -1,5 +1,5 @@
-`include "../define/ctrl_def.v"
-`include "../define/instr_def.v"
+`include "././define/ctrl_def.v"
+`include "././define/instr_def.v"
 
 module ctrl(
   input [31:0] instr,

@@ -1,4 +1,4 @@
-`include "../define/ctrl_def.v"
+`include "././define/ctrl_def.v"
 
 module alu(
   input [31:0] A,    //1st operand

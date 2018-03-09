@@ -1,4 +1,4 @@
-module mips_tb();
+module test();
   `timescale 1ns / 1ns
   reg clk;
   reg rst;

@@ -99,7 +99,6 @@ module mips(
   mux JRegDst_mux(JRegDst, rf_rd1, alu_result, dm_rd, 0, jreg_dst);
   mux PC_Jump_mux(Jump, pc_temp, {pc_next_id[31:28], instr[25:0], 2'b00}, jreg_dst, 0, pc_new);
   
-  
   ext EXT(EXTOp, instr[15:0], ext_result);
   
   be_ext beEXT(alu_result_mem[1:0], instr_mem[31:26], be);
@@ -113,22 +112,17 @@ module mips(
   
   rf RF(RegWrite_wb, rs, rt, rf_wa_wb, rf_wd, rf_rd1, rf_rd2);
 
-
   alu ALU(alu_srcA, alu_srcB, ALUOp_ex, alu_result);
-  
   
   dm DM(MemWrite_mem, alu_result_mem[11:2], be, dm_wd, dm_rd);
   
-  
   if_id IF_ID(clk, PC_IFWrite, IF_flush, pc_next_if, im_rd, pc_next_id, instr);
     
-  
   id_ex ID_EX(clk, stall, RegDst_id, ALUOp_id, ALUSrcA_id, ALUSrcB_id, MemRead_id, MemWrite_id, RegWrite_id, MemtoReg_id,
               rf_rd1, rf_rd2, shamt, ext_result, rs, rt, rd, instr, pc_next_id,
               RegDst_ex, ALUOp_ex, ALUSrcA_ex, ALUSrcB_ex, MemRead_ex, MemWrite_ex, RegWrite_ex, MemtoReg_ex,
               rf_rd1_ex, rf_rd2_ex, shamt_ex, ext_result_ex, rs_ex, rt_ex, rd_ex, instr_ex, pc_next_ex);
               
-  
   ex_mem EX_MEM(clk, MemRead_ex, MemWrite_ex, RegWrite_ex, MemtoReg_ex, alu_result, forwardB_result, rf_wa, instr_ex,
                 MemRead_mem, MemWrite_mem, RegWrite_mem, MemtoReg_mem, alu_result_mem, dm_wd, rf_wa_mem, instr_mem);
   
@@ -141,7 +135,6 @@ module mips(
   hazard_detection HazardD(rs, rt, rf_wa, MemRead_ex, RegWrite_ex, PC_IFWrite, stall);
   
   branch_jump_ctrl B_J_CTRL(im_rd[31:26], instr[31:26], instr[20:16], rf_rd1, rf_rd2, Jump, Branch, IF_flush);
-  
   
   ctrl CTRL(instr, RegDst_id, ALUOp_id, ALUSrcA_id, ALUSrcB_id, EXTOp, 
             MemRead_id, MemWrite_id, RegWrite_id, MemtoReg_id, Jump);

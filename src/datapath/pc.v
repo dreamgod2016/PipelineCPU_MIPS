@@ -3,11 +3,11 @@ module pc (
     input isPCWrite,
     // input PCReSet,
     input[31:0] data,
-    output reg[31:0] PC
+    output [31:0] PC
 );
-
+  reg[31:0] currentPC;
   initial
-    PC = 32'h3000; 
+    currentPC = 32'h3000; 
   
 
     always @(posedge clk) 
@@ -19,7 +19,7 @@ module pc (
         end
         else begin*/
             if(isPCWrite)
-                PC = data[31:0];
+                currentPC = data[31:0];
         //end
         //PC就是PC，不要加4这么奇葩了。
         // PC = PC + 4;
@@ -35,4 +35,6 @@ module pc (
         //                 PC = PC + temp;
         // end
     end
-    endmodule
+
+  assign PC = currentPC;
+endmodule

@@ -1,4 +1,4 @@
-`include "../define/instr_def.v"
+`include "././define/instr_def.v"
 
 module branch_jump_ctrl(
   input [5:0] OP_if,

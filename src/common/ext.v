@@ -1,4 +1,4 @@
-`include "../define/ctrl_def.v"
+`include "././define/ctrl_def.v"
 
 module ext(
   input [1:0] EXTOp,  

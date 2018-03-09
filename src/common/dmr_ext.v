@@ -1,5 +1,5 @@
 /* for lb lbu lh lhu lw*/
-`include "../define/instr_def.v"
+`include "././define/instr_def.v"
 
 module dmr_ext(
   input [1:0] control,  //alu_result[1:0]
